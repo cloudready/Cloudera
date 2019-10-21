@@ -150,7 +150,7 @@
                             "", [
                                 "#!/bin/bash \n",
                                 "yum install -y git screen \n",
-                                "git clone https://github.com/cloud /home/ec2-user/Cloudera \n",
+                                "git clone https://github.com/cloudready/Cloudera /home/ec2-user/Cloudera \n",
                                 "chown -R ec2-user:ec2-user /home/ec2-user/Cloudera \n",
                                 "chmod u+x /home/ec2-user/Cloudera/Director/director-redhat-7-installation-script.sh \n",
                                 "./home/ec2-user/Cloudera/Director/director-redhat-7-installation-script.sh \n"
