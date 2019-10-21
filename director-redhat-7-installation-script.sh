@@ -26,5 +26,5 @@ sed -i.bak 's/director\/2/director\/2.8.0/g' /etc/yum.repos.d/cloudera-director.
 
 # Install Cloudera Director server and client
 yum -y install cloudera-director-server cloudera-director-client
-service cloudera-director-server start
+sudo service cloudera-director-server start
 
