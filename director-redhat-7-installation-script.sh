@@ -24,6 +24,14 @@ sh -c "echo export JAVA_HOME=/usr/java/jdk1.8.0_121-cloudera >> /root/.bash_prof
 curl -o /etc/yum.repos.d/cloudera-director.repo https://archive.cloudera.com/director/redhat/7/x86_64/director/cloudera-director.repo
 sed -i.bak 's/director\/2/director\/2.8.0/g' /etc/yum.repos.d/cloudera-director.repo
 
+if [ -f /etc/selinux/config ]; then
+  # Disable SELinux, as it doesn't play nicely with Cloudera Manager
+  echo "Disabling SELinux"
+  sudo sed -e 's/^SELINUX=enforcing/SELINUX=disabled/' -i /etc/selinux/config
+  sudo sed -e 's/^SELINUX=permissive/SELINUX=disabled/' -i /etc/selinux/config
+  sudo setenforce 0
+fi
+
 # Install Cloudera Director server and client
 yum -y install cloudera-director-server cloudera-director-client
 sudo service cloudera-director-server start
